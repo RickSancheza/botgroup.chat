@@ -13,7 +13,7 @@ export const modelConfigs = [
     baseURL: "https://api.moonshot.cn/v1",
   },
   {
-    model: "doubao-1-5-lite-32k-250115",
+    model: "Doubao-Seed-2.0-Code",
     apiKey: "ARK_API_KEY", // Cloudflare 环境变量名（火山引擎）
     baseURL: "https://ark.cn-beijing.volces.com/api/v3",
   },
@@ -60,7 +60,7 @@ export function generateAICharacters(groupName: string, allTags: string): AIChar
       id: "ai_doubao",
       name: "豆包",
       personality: "doubao",
-      model: modelConfigs[2].model, // doubao-1-5-lite-32k-250115
+      model: modelConfigs[2].model, // Doubao-Seed-2.0-Code
       avatar: "/img/doubao_new.png",
       custom_prompt: `你是一个名叫"豆包"的硅基生命体，你当前在一个叫"${groupName}" 的聊天群里。风格活泼一点，但不要胡编。`,
       tags: ["聊天", "文字游戏", "娱乐"],
