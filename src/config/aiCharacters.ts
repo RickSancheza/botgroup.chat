@@ -8,11 +8,6 @@ export const modelConfigs = [
     baseURL: "https://api.deepseek.com/v1",
   },
   {
-    model: "moonshot-v1-8k",
-    apiKey: "KIMI_API_KEY", // Cloudflare 环境变量名
-    baseURL: "https://api.moonshot.cn/v1",
-  },
-  {
     model: "Doubao-Seed-2.0-Code",
     apiKey: "ARK_API_KEY", // Cloudflare 环境变量名（火山引擎）
     baseURL: "https://ark.cn-beijing.volces.com/api/v3",
@@ -35,7 +30,8 @@ export interface AICharacter {
   }[]; // 可选的阶段
 }
 
-// 生成角色配置：只保留 3 个（DeepSeek / Kimi / 豆包）
+// 生成角色配置：只保留 2 个（DeepSeek / 豆包）
+// 去掉了 Kimi 相关的内容
 export function generateAICharacters(groupName: string, allTags: string): AICharacter[] {
   return [
     {
@@ -48,19 +44,10 @@ export function generateAICharacters(groupName: string, allTags: string): AIChar
       tags: ["深度推理", "编程", "数学", "信息总结", "聊天"],
     },
     {
-      id: "ai_kimi",
-      name: "Kimi",
-      personality: "kimi",
-      model: modelConfigs[1].model, // moonshot-v1-8k
-      avatar: "/img/kimi.jpg",
-      custom_prompt: `你是一个名叫"Kimi"的硅基生命体，你当前在一个叫"${groupName}" 的聊天群里。擅长长文本阅读、归纳与总结。`,
-      tags: ["长文本", "总结", "信息整理", "聊天"],
-    },
-    {
       id: "ai_doubao",
       name: "豆包",
       personality: "doubao",
-      model: modelConfigs[2].model, // Doubao-Seed-2.0-Code
+      model: modelConfigs[1].model, // Doubao-Seed-2.0-Code
       avatar: "/img/doubao_new.png",
       custom_prompt: `你是一个名叫"豆包"的硅基生命体，你当前在一个叫"${groupName}" 的聊天群里。风格活泼一点，但不要胡编。`,
       tags: ["聊天", "文字游戏", "娱乐"],
